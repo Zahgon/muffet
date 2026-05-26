@@ -8,6 +8,4 @@ const (
 	never  color = "never"
 )
 
-func isColorEnabled(c color, terminal bool) bool {
-	return c == always || terminal && c == auto
-}
+func isColorEnabled(c color, terminal bool) bool { _ = "STUB: not implemented"; return false }

@@ -1,13 +1,8 @@
 package main
 
 import (
-	"bytes"
-	"errors"
 	"net/http"
 	"regexp"
-	"strings"
-
-	"github.com/jessevdk/go-flags"
 )
 
 type arguments struct {
@@ -49,98 +44,22 @@ type arguments struct {
 	Header              http.Header
 }
 
-func getArguments(ss []string) (*arguments, error) {
-	args := arguments{}
-	ss, err := flags.NewParser(&args, flags.PassDoubleDash).ParseArgs(ss)
+func getArguments(ss []string) (*arguments, error) { _ = "STUB: not implemented"; return nil, nil }
 
-	if err != nil {
-		return nil, err
-	} else if args.Version || args.Help {
-		return &args, nil
-	} else if len(ss) != 1 {
-		return nil, errors.New("invalid number of arguments")
-	}
+func help() string { _ = "STUB: not implemented"; return "" }
 
-	reconcileDeprecatedArguments(&args)
-
-	args.URL = ss[0]
-
-	args.ExcludedPatterns, err = compileRegexps(args.RawExcludedPatterns)
-	if err != nil {
-		return nil, err
-	}
-
-	args.IncludePatterns, err = compileRegexps(args.RawIncludedPatterns)
-	if err != nil {
-		return nil, err
-	}
-
-	args.Header, err = parseHeaders(args.RawHeaders)
-	if err != nil {
-		return nil, err
-	}
-
-	args.AcceptedStatusCodes, err = parseStatusCodeSet(args.RawAcceptedStatusCodes)
-	if err != nil {
-		return nil, err
-	}
-
-	if args.Format == "junit" && args.Verbose {
-		return nil, errors.New("verbose option not supported for JUnit output")
-	}
-
-	return &args, nil
-}
-
-func help() string {
-	p := flags.NewParser(&arguments{}, flags.PassDoubleDash)
-	p.Usage = "[options] <url>"
-
-	// Parse() is run here to show default values in help.
-	// This seems to be a bug in go-flags.
-	p.Parse() // nolint:errcheck
-
-	b := &bytes.Buffer{}
-	p.WriteHelp(b)
-	return b.String()
-}
+// Parse() is run here to show default values in help.
+// This seems to be a bug in go-flags.
+// nolint:errcheck
 
 func compileRegexps(regexps []string) ([]*regexp.Regexp, error) {
-	rs := make([]*regexp.Regexp, 0, len(regexps))
-
-	for _, s := range regexps {
-		r, err := regexp.Compile(s)
-		if err != nil {
-			return nil, err
-		}
-
-		rs = append(rs, r)
-	}
-
-	return rs, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func parseHeaders(headers []string) (http.Header, error) {
-	h := make(http.Header, len(headers))
-
-	for _, s := range headers {
-		i := strings.IndexRune(s, ':')
-
-		if i < 0 {
-			return nil, errors.New("invalid header format")
-		}
-
-		h.Add(s[:i], strings.TrimSpace(s[i+1:]))
-	}
-
-	return h, nil
+	_ = "STUB: not implemented"
+	return *new(http.Header), nil
 }
 
-func reconcileDeprecatedArguments(args *arguments) {
-	if args.JSONOutput {
-		args.Format = "json"
-		args.Verbose = args.Verbose || args.VerboseJSON
-	} else if args.JUnitOutput {
-		args.Format = "junit"
-	}
-}
+func reconcileDeprecatedArguments(args *arguments) { _ = "STUB: not implemented"; return }

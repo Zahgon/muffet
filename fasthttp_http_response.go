@@ -10,30 +10,14 @@ type fasthttpHttpResponse struct {
 }
 
 func newFasthttpHttpResponse(u *fasthttp.URI, r *fasthttp.Response) httpResponse {
-	return fasthttpHttpResponse{u, r}
+	_ = "STUB: not implemented"
+	return *new(httpResponse)
 }
 
-func (r fasthttpHttpResponse) URL() string {
-	return r.url.String()
-}
+func (r fasthttpHttpResponse) URL() string { _ = "STUB: not implemented"; return "" }
 
-func (r fasthttpHttpResponse) StatusCode() int {
-	return r.response.StatusCode()
-}
+func (r fasthttpHttpResponse) StatusCode() int { _ = "STUB: not implemented"; return 0 }
 
-func (r fasthttpHttpResponse) Header(key string) string {
-	return string(r.response.Header.Peek(key))
-}
+func (r fasthttpHttpResponse) Header(key string) string { _ = "STUB: not implemented"; return "" }
 
-func (r fasthttpHttpResponse) Body() ([]byte, error) {
-	switch string(r.response.Header.Peek("Content-Encoding")) {
-	case "gzip":
-		return r.response.BodyGunzip()
-	case "deflate":
-		return r.response.BodyInflate()
-	case "br":
-		return r.response.BodyUnbrotli()
-	}
-
-	return r.response.Body(), nil
-}
+func (r fasthttpHttpResponse) Body() ([]byte, error) { _ = "STUB: not implemented"; return nil, nil }

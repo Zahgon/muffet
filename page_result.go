@@ -16,6 +16,4 @@ type errorLinkResult struct {
 	Error error
 }
 
-func (r *pageResult) OK() bool {
-	return len(r.ErrorLinkResults) == 0
-}
+func (r *pageResult) OK() bool { _ = "STUB: not implemented"; return false }

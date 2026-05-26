@@ -4,14 +4,8 @@ type semaphore struct {
 	channel chan bool
 }
 
-func newSemaphore(n int) semaphore {
-	return semaphore{make(chan bool, n)}
-}
+func newSemaphore(n int) semaphore { _ = "STUB: not implemented"; return *new(semaphore) }
 
-func (s semaphore) Request() {
-	s.channel <- true
-}
+func (s semaphore) Request() { _ = "STUB: not implemented"; return }
 
-func (s semaphore) Release() {
-	<-s.channel
-}
+func (s semaphore) Release() { _ = "STUB: not implemented"; return }

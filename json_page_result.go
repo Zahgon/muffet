@@ -16,23 +16,6 @@ type jsonErrorLinkResult struct {
 }
 
 func newJSONPageResult(r *pageResult, verbose bool) *jsonPageResult {
-	c := len(r.ErrorLinkResults)
-
-	if verbose {
-		c += len(r.SuccessLinkResults)
-	}
-
-	ls := make([]any, 0, c)
-
-	if verbose {
-		for _, r := range r.SuccessLinkResults {
-			ls = append(ls, &jsonSuccessLinkResult{r.URL, r.StatusCode})
-		}
-	}
-
-	for _, r := range r.ErrorLinkResults {
-		ls = append(ls, &jsonErrorLinkResult{r.URL, r.Error.Error()})
-	}
-
-	return &jsonPageResult{r.URL, ls}
+	_ = "STUB: not implemented"
+	return nil
 }

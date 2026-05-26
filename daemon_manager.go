@@ -7,25 +7,8 @@ type daemonManager struct {
 	waitGroup *sync.WaitGroup
 }
 
-func newDaemonManager(capacity int) *daemonManager {
-	return &daemonManager{make(chan func(), capacity), &sync.WaitGroup{}}
-}
+func newDaemonManager(capacity int) *daemonManager { _ = "STUB: not implemented"; return nil }
 
-func (m daemonManager) Add(f func()) {
-	m.waitGroup.Add(1)
+func (m daemonManager) Add(f func()) { _ = "STUB: not implemented"; return }
 
-	m.daemons <- func() {
-		f()
-		m.waitGroup.Done()
-	}
-}
-
-func (m daemonManager) Run() {
-	go func() {
-		for f := range m.daemons {
-			go f()
-		}
-	}()
-
-	m.waitGroup.Wait()
-}
+func (m daemonManager) Run() { _ = "STUB: not implemented"; return }

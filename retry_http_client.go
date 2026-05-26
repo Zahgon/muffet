@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"net"
 	"net/http"
 	"net/url"
 	"time"
@@ -15,30 +13,11 @@ type retryHttpClient struct {
 }
 
 func newRetryHttpClient(c httpClient, maxCount uint, initialDelay time.Duration) httpClient {
-	return &retryHttpClient{c, maxCount, initialDelay}
+	_ = "STUB: not implemented"
+	return *new(httpClient)
 }
 
 func (c *retryHttpClient) Get(u *url.URL, header http.Header) (httpResponse, error) {
-	d := c.initialDelay
-	e := error(nil)
-
-	for range c.maxCount + 1 {
-		r, err := c.client.Get(u, header)
-
-		if err == nil {
-			return r, nil
-		} else if e, ok := err.(net.Error); !ok || !e.Timeout() {
-			return nil, err
-		}
-
-		time.Sleep(d)
-		d = min(retryBackoff*d, maxRetryDelay)
-		e = err
-	}
-
-	if c.maxCount == 0 {
-		return nil, e
-	}
-
-	return nil, fmt.Errorf("max retry count %d exceeded: %w", c.maxCount, e)
+	_ = "STUB: not implemented"
+	return *new(httpResponse), nil
 }

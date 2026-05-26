@@ -10,17 +10,12 @@ type sitemapPage struct {
 }
 
 func newSitemapPage(u *url.URL, links map[string]error) *sitemapPage {
-	return &sitemapPage{u, links}
-}
-
-func (p *sitemapPage) URL() *url.URL {
-	return p.url
-}
-
-func (p *sitemapPage) Fragments() map[string]struct{} {
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (p *sitemapPage) Links() map[string]error {
-	return p.links
-}
+func (p *sitemapPage) URL() *url.URL { _ = "STUB: not implemented"; return nil }
+
+func (p *sitemapPage) Fragments() map[string]struct{} { _ = "STUB: not implemented"; return nil }
+
+func (p *sitemapPage) Links() map[string]error { _ = "STUB: not implemented"; return nil }

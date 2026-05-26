@@ -7,10 +7,8 @@ type concurrentStringSet struct {
 }
 
 func newConcurrentStringSet() concurrentStringSet {
-	return concurrentStringSet{&sync.Map{}}
+	_ = "STUB: not implemented"
+	return *new(concurrentStringSet)
 }
 
-func (c concurrentStringSet) Add(s string) bool {
-	_, exist := c.set.LoadOrStore(s, nil)
-	return exist
-}
+func (c concurrentStringSet) Add(s string) bool { _ = "STUB: not implemented"; return false }

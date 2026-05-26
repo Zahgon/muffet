@@ -17,33 +17,17 @@ type linkFilterer struct {
 }
 
 func newLinkFilterer(es []*regexp.Regexp, is []*regexp.Regexp) linkFilterer {
-	return linkFilterer{excludedPatterns: es, includedPatterns: is}
+	_ = "STUB: not implemented"
+	return *new(linkFilterer)
 }
 
-func (f linkFilterer) IsValid(u *url.URL) bool {
-	s := u.String()
+func (f linkFilterer) IsValid(u *url.URL) bool { _ = "STUB: not implemented"; return false }
 
-	if _, ok := validSchemes[u.Scheme]; !ok {
-		return false
-	}
+func (f linkFilterer) isLinkExcluded(u string) bool { _ = "STUB: not implemented"; return false }
 
-	return !f.isLinkExcluded(s) && f.isLinkIncluded(s)
-}
-
-func (f linkFilterer) isLinkExcluded(u string) bool {
-	return f.matches(u, f.excludedPatterns)
-}
-
-func (f linkFilterer) isLinkIncluded(u string) bool {
-	return len(f.includedPatterns) == 0 || f.matches(u, f.includedPatterns)
-}
+func (f linkFilterer) isLinkIncluded(u string) bool { _ = "STUB: not implemented"; return false }
 
 func (f linkFilterer) matches(u string, rs []*regexp.Regexp) bool {
-	for _, r := range rs {
-		if r.MatchString(u) {
-			return true
-		}
-	}
-
+	_ = "STUB: not implemented"
 	return false
 }

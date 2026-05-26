@@ -11,17 +11,12 @@ type htmlPage struct {
 }
 
 func newHtmlPage(u *url.URL, fragments map[string]struct{}, links map[string]error) *htmlPage {
-	return &htmlPage{u, fragments, links}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (p *htmlPage) URL() *url.URL {
-	return p.url
-}
+func (p *htmlPage) URL() *url.URL { _ = "STUB: not implemented"; return nil }
 
-func (p *htmlPage) Fragments() map[string]struct{} {
-	return p.fragments
-}
+func (p *htmlPage) Fragments() map[string]struct{} { _ = "STUB: not implemented"; return nil }
 
-func (p *htmlPage) Links() map[string]error {
-	return p.links
-}
+func (p *htmlPage) Links() map[string]error { _ = "STUB: not implemented"; return nil }

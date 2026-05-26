@@ -20,36 +20,6 @@ type xmlLinkFailure struct {
 	Message string `xml:"message,attr"`
 }
 
-func newXMLPageResult(pr *pageResult) *xmlPageResult {
-	ls := make([]*xmlLinkResult, 0, len(pr.SuccessLinkResults)+len(pr.ErrorLinkResults))
+func newXMLPageResult(pr *pageResult) *xmlPageResult { _ = "STUB: not implemented"; return nil }
 
-	for _, r := range pr.SuccessLinkResults {
-		ls = append(
-			ls,
-			&xmlLinkResult{
-				Url:    r.URL,
-				Source: pr.URL,
-			},
-		)
-	}
-
-	for _, r := range pr.ErrorLinkResults {
-		ls = append(
-			ls,
-			&xmlLinkResult{
-				Url:     r.URL,
-				Source:  pr.URL,
-				Failure: &xmlLinkFailure{Message: r.Error.Error()},
-			},
-		)
-	}
-
-	return &xmlPageResult{
-		Url: pr.URL,
-		// TODO: Consider adding information skipped links, if that can be tracked.
-		Skipped:  0,
-		Total:    len(ls),
-		Failures: len(pr.ErrorLinkResults),
-		Links:    ls,
-	}
-}
+// TODO: Consider adding information skipped links, if that can be tracked.

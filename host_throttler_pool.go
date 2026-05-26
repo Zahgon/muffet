@@ -8,16 +8,8 @@ type hostThrottlerPool struct {
 }
 
 func newHostThrottlerPool(requestPerSecond, maxConnectionsPerHost int) *hostThrottlerPool {
-	return &hostThrottlerPool{requestPerSecond, maxConnectionsPerHost, sync.Map{}}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (p *hostThrottlerPool) Get(name string) *hostThrottler {
-	t := newHostThrottler(p.requestPerSecond, p.maxConnectionsPerHost)
-	x, ok := p.hostMap.LoadOrStore(name, t)
-
-	if ok {
-		t = x.(*hostThrottler)
-	}
-
-	return t
-}
+func (p *hostThrottlerPool) Get(name string) *hostThrottler { _ = "STUB: not implemented"; return nil }

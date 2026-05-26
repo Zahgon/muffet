@@ -12,20 +12,11 @@ type throttledHttpClient struct {
 }
 
 func newThrottledHttpClient(c httpClient, requestPerSecond int, maxConnections, maxConnectionsPerHost int) httpClient {
-	return &throttledHttpClient{
-		c,
-		newSemaphore(maxConnections),
-		newHostThrottlerPool(requestPerSecond, maxConnectionsPerHost),
-	}
+	_ = "STUB: not implemented"
+	return *new(httpClient)
 }
 
 func (c *throttledHttpClient) Get(u *url.URL, header http.Header) (httpResponse, error) {
-	c.connections.Request()
-	defer c.connections.Release()
-
-	t := c.hostThrottlerPool.Get(u.Hostname())
-	t.Request()
-	defer t.Release()
-
-	return c.client.Get(u, header)
+	_ = "STUB: not implemented"
+	return *new(httpResponse), nil
 }
